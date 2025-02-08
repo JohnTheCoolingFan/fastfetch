@@ -43,6 +43,10 @@ FF_MAYBE_UNUSED static bool detectArmbianVersion(FFOSResult* result)
 {
     if (ffStrbufStartsWithS(&result->prettyName, "Armbian ")) // Official Armbian release images
         ffStrbufSetS(&result->name, "Armbian");
+    else if (ffStrbufStartsWithS(&result->prettyName, "Armbian_community ")) // Armbian Community support image
+        ffStrbufSetS(&result->name, "Armbian (community release)");
+    else if (ffStrbufStartsWithS(&result->prettyName, "Armbian_Security ")) // Armbian Security oriented image with kali repo
+        ffStrbufSetS(&result->name, "Armbian (security oriented)");
     else if (ffStrbufStartsWithS(&result->prettyName, "Armbian-unofficial ")) // Unofficial Armbian image built from source
         ffStrbufSetS(&result->name, "Armbian (custom build)");
     else
